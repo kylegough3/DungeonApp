@@ -86,12 +86,12 @@ namespace DungeonApp
             //create a string[]
             string[] rooms =
             {
-                "Room 1",
-                "Room 2",
-                "Room 3",
-                "Room 4",
-                "Room 5",
-                "Room 6",
+                "The room is covered in dust, dirt, and stones. Even boulders.",
+                "There is a giant pool in the center of the room, with small platforms scattered throughout.",
+                "The room is filled with succulents.",
+                "The room is dark, lit only by small candles.",
+                "There is a large boxing ring in the middle of the room.",
+                "There are icicles on the ceiling and the floor is a sheet of ice.",
             };
             //rng
             Random rand = new Random();
@@ -100,6 +100,6 @@ namespace DungeonApp
             return rooms[index];
         }
 
-        //TODO GetRoom() returns string (reference magic 8 ball lab)
+        
     }//end class
 }//end namespace
