@@ -25,6 +25,7 @@ namespace DungeonLibrary
         private string _name;
         private int _bonusHitChance;
         private bool _isTwoHanded;
+        private WeaponType _weaponType;
 
         //PROPERTIES
         public int MinDamage
@@ -42,12 +43,12 @@ namespace DungeonLibrary
         public int MaxDamage
         {
             get { return _maxDamage; }
-            set { 
-                 if (value < MinDamage)
+            set {
+                if (value < MinDamage)
                 { _maxDamage = MinDamage; }
                 else
                 { _maxDamage = value; }
-                }
+            }
         }
         public string Name
         {
@@ -64,25 +65,37 @@ namespace DungeonLibrary
             get { return _isTwoHanded; }
             set { _isTwoHanded = value; }
         }
+
+        public WeaponType WeaponType
+        { get {return _weaponType; }
+          set { _weaponType = value; }
+        }
+    
+
+
         //CONSTRUCTORS
-        public Weapon(string name, int minDamage, int maxDamage, int bonusHitChance, bool isTwoHanded)
+        public Weapon(string name, WeaponType weaponType, int minDamage, int maxDamage, int bonusHitChance, bool isTwoHanded)
         { //Fully Qualified
             Name = name;
-            MinDamage = minDamage;
             MaxDamage = maxDamage;
+            MinDamage = minDamage;
             BonusHitChance = bonusHitChance;
             IsTwoHanded = isTwoHanded;
+            WeaponType = weaponType;
         }//end Fully Qualified
+        
         public Weapon()
         { }//Unqualified
         //METHODS
         public override string ToString()
         {
             return $"Name: {Name}\n" +
-                $"Min Damage: {MinDamage}" +
-                $"Max Damage: {MaxDamage}" +
-                $"Bonus Hit Chance: {BonusHitChance}" +
-                $"Two Handed: {IsTwoHanded}";
+                $"Weapon Type: {WeaponType}\n" +
+                $"Min Damage: {MinDamage}\n" +
+                $"Max Damage: {MaxDamage}\n" +
+                $"Bonus Hit Chance: {BonusHitChance}\n" +
+                $"{(IsTwoHanded ? "Two" : "One")}-Handed";
+            
         }
     }
 }

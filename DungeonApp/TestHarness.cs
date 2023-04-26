@@ -15,7 +15,7 @@ namespace DungeonApp
             Character c1 = new Character("Test Character", 50, 20, 100, 100);
             Console.WriteLine(c1);
 
-            Weapon w1 = new Weapon("Wooden Sword", 1, 5, 0, false);
+            Weapon w1 = new Weapon("Wooden Sword", WeaponType.sword, minDamage: 1, maxDamage: 5, bonusHitChance: 0, isTwoHanded: false);
             Console.WriteLine(w1);
 
 

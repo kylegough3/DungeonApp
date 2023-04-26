@@ -24,12 +24,13 @@
         private int _block;
         private int _maxLife;
         private int _life;
+        
 
         //PROPERTIES
         public string Name
         {
             get { return _name; }
-            set { Name = value; }
+            set { _name = value; }
         }
         public int HitChance
         {
@@ -62,13 +63,16 @@
             }
         }
 
+        
+
 
         //CONSTRUCTORS - Life = life; -> Life = maxLife
         //No matter what, assign MaxLife BEFORE Life.
 
-            public Character(string name, int hitChance, int block, int maxLife, int life)
+            public Character(string name,  int hitChance, int block, int maxLife, int life)
         {//Fully Qualified
             Name = name;
+       
             MaxLife = maxLife;
             Life = life;
             HitChance = hitChance;
@@ -84,6 +88,7 @@
         public override string ToString()
         {
             return $"Name: {Name}\n " +
+                
                 $"Life: {Life} / {MaxLife}\n" +
                 $"Hit Chance: {HitChance}\n" +
                 $"Block: {Block}\n";
