@@ -12,7 +12,11 @@ namespace DungeonApp
     {
         static void Main(string[] args)
         {
-            Character c1 = new Character("Test Character", 100, maxLife: 50, life: 20);
+            Character c1 = new Character("Test Character", 50, 20, 100, 100);
+            Console.WriteLine(c1);
+
+            Weapon w1 = new Weapon("Wooden Sword", 1, 5, 0, false);
+            Console.WriteLine(w1);
 
 
         }//end Main()

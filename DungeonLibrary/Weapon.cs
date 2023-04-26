@@ -68,8 +68,8 @@ namespace DungeonLibrary
         public Weapon(string name, int minDamage, int maxDamage, int bonusHitChance, bool isTwoHanded)
         { //Fully Qualified
             Name = name;
-            MaxDamage = maxDamage;
             MinDamage = minDamage;
+            MaxDamage = maxDamage;
             BonusHitChance = bonusHitChance;
             IsTwoHanded = isTwoHanded;
         }//end Fully Qualified
