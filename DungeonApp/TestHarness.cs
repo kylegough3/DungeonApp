@@ -12,7 +12,7 @@ namespace DungeonApp
     {
         static void Main(string[] args)
         {
-            Character c1 = new Character("Test Character", 50, 20, 100, 100);
+            Player c1 = new Player("Test Character", 50, 20, 100, Race.Princess,);
             Console.WriteLine(c1);
             Console.WriteLine("CalcBlock: " + c1.CalcBlock());
             Console.WriteLine("CalcDamage: " + c1.CalcDamage());
@@ -20,6 +20,9 @@ namespace DungeonApp
 
             Weapon w1 = new Weapon("Wooden Sword", WeaponType.sword, minDamage: 1, maxDamage: 5, bonusHitChance: 0, isTwoHanded: false);
             Console.WriteLine(w1);
+
+            //TODO Test player creation and ToString(), calcblock, calcdamage, calchitchance
+            //TODO Test monster creation and ToString(), calcblock, calcdamage, calchitchance
 
 
         }//end Main()
