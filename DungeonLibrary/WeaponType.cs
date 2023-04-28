@@ -12,11 +12,11 @@ namespace DungeonLibrary
         //Add at least 5 types of weapons
         //Intent of this is to provide potential expansions, such as a monster being weak to a particular type of weapon
 
-        sword,
-        bow,
-        axe,
-        lute,
-        fryingpan
+        Sword,
+        Bow,
+        Axe,
+        Lute,
+        Frying_Pan
 
 
     }

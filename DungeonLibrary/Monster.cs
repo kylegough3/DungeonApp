@@ -24,32 +24,35 @@ namespace DungeonLibrary
             set
             {
                 if (value < 0)
-                { value = 0; }
+                { value = 1; }
                 else if (value > MaxDamage)
                 { value = MaxDamage; }
                 else { _minDamage = value; }
             }
         }
+        public string Description;
 
-        public Monster(string name, int hitChance, int block, int maxLife, int maxDamage, int minDamage) 
-            :base(name, hitChance, block, maxLife)
+        public Monster(string name, int hitChance, int block, int maxLife, int minDamage, int maxDamage, string description)
+            : base(name, hitChance, block, maxLife)
         {
             //TODO - create the props/fields, add parameters, and assign the props
             MaxDamage = maxDamage;
             MinDamage = minDamage;
+            Description = description;
+            if (maxDamage <= minDamage || minDamage <= 0)
+            {
+                throw new ArgumentException("Min Damage must be between zero and Max Damage");
+            }
         }
         public Monster() { } //empty CTOR for default monsters
 
-        //TODO - Override the ToString() to include your new custom props
+        // Override the ToString() to include your new custom props
         public override string ToString()
         {
-            return $"Name: {Name}\n " +
-                $"Life: {Life} / {MaxLife}\n" +
-                $"Damage Range: {MinDamage} - {MaxDamage}" +
-                $"Hit Chance: {HitChance}\n" +
-                $"Block: {Block}\n";
+            return base.ToString() + $"\nDamage: {MinDamage} - {MaxDamage}\n" +
+                $"Description: {Description}";
         }
-        //TODO - Override CalcDamage()
+        // Override CalcDamage()
         public override int CalcDamage()
         {
             //return a random number between your min and max damage
@@ -57,4 +60,6 @@ namespace DungeonLibrary
         }
 
     }//end class Monster
+
+    
 }

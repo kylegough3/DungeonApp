@@ -12,19 +12,25 @@ namespace DungeonApp
     {
         static void Main(string[] args)
         {
-            Player c1 = new Player("Test Character", 50, 20, 100, Race.Princess,);
-            Console.WriteLine(c1);
-            Console.WriteLine("CalcBlock: " + c1.CalcBlock());
-            Console.WriteLine("CalcDamage: " + c1.CalcDamage());
-            Console.WriteLine("CalcHitChance: " + c1.CalcHitChance());
-
-            Weapon w1 = new Weapon("Wooden Sword", WeaponType.sword, minDamage: 1, maxDamage: 5, bonusHitChance: 0, isTwoHanded: false);
-            Console.WriteLine(w1);
-
-            //TODO Test player creation and ToString(), calcblock, calcdamage, calchitchance
-            //TODO Test monster creation and ToString(), calcblock, calcdamage, calchitchance
+            Weapon w1 = new Weapon("Frying Pan", WeaponType.Frying_Pan, minDamage: 1, maxDamage: 5, bonusHitChance: 5, isTwoHanded: true);
+            Player player = new Player("Test Character", 80, 20, 100, Race.Princess, w1);
+            Egg m1 = new Egg();
 
 
+            while (player.Life >0 && m1.Life >0)
+            {
+                Combat.DoBattle(player, m1);
+                Console.WriteLine("Current Player Life: " + player.Life);
+                Console.WriteLine("Current Monster Life: " + m1.Life);
+                Console.ReadKey();
+                Console.Clear();
+            }
+            if (player.Life <=0)
+            {
+                Console.WriteLine("Dude, you lost");
+            }
+
+            
         }//end Main()
     }//end class
 }//end namespace

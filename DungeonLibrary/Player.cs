@@ -11,8 +11,9 @@ namespace DungeonLibrary
     {
         public Race PlayerRace { get; set; }
         public Weapon EquippedWeapon { get; set; }
-        public Player(string name, int hitChance, int block, int maxLife, Race playerRace, Weapon equippedWeapon)
-            : base(name, hitChance, block, maxLife)
+        public Player(string name, int hitChance, int block, int maxLife, //Character params
+            Race playerRace, Weapon equippedWeapon) //player params
+            : base(name, hitChance, block, maxLife) //send ONLY character params back to parent
         {
             PlayerRace = playerRace;
             EquippedWeapon = equippedWeapon;
@@ -21,18 +22,22 @@ namespace DungeonLibrary
             switch (PlayerRace)
             {
                 case Race.Warrior:
-                    EquippedWeapon += 5;
-                    break;
-                case Race.Elf:
                     HitChance += 5;
                     break;
+                case Race.Elf:
+                    HitChance += 3;
+                    Block += 3;
+                    break;
                 case Race.Dwarf:
+                    MaxLife += 5;
                     break;
                 case Race.Bard:
+                    HitChance += 1;
+                    MaxLife -= 2;
                     break;
                 case Race.Princess:
                     HitChance -= 2;
-                    Block += 10;
+                    Block += 5;
                     break;
             }
 
