@@ -12,9 +12,9 @@ namespace DungeonApp
     {
         static void Main(string[] args)
         {
-            Weapon w1 = new Weapon("Frying Pan", WeaponType.Frying_Pan, minDamage: 1, maxDamage: 5, bonusHitChance: 5, isTwoHanded: true);
+            Weapon w1 = new Weapon("Frying Pan", WeaponType.Frying_Pan, minDamage: 1, maxDamage: 20, bonusHitChance: 5, isTwoHanded: true);
             Player player = new Player("Test Character", 80, 20, 100, Race.Princess, w1);
-            Egg m1 = new Egg();
+            Ostrich m1 = new ();
 
 
             while (player.Life >0 && m1.Life >0)
@@ -22,6 +22,8 @@ namespace DungeonApp
                 Combat.DoBattle(player, m1);
                 Console.WriteLine("Current Player Life: " + player.Life);
                 Console.WriteLine("Current Monster Life: " + m1.Life);
+                Console.WriteLine("Speed: " + m1.Speed);
+                
                 Console.ReadKey();
                 Console.Clear();
             }

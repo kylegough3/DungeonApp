@@ -16,29 +16,33 @@ namespace DungeonLibrary
 
 
 
-            public bool IsFragile { get; set; }
-            public Egg(string name, int hitChance, int block, int maxLife, int minDamage, int maxDamage, string description, bool isFragile)
+            public bool IsAcidic { get; set; }
+            public Egg(string name, int hitChance, int block, int maxLife, int minDamage, int maxDamage, string description, bool isAcidic)
                 : base(name, hitChance, block, maxLife, minDamage, maxDamage, description)
             {
+            
+            IsAcidic = isAcidic;
+            }
+        public Egg() 
+        {
             MaxLife = 50;
             MaxDamage = 10;
             Name = "Egg";
             Life = 20;
             MinDamage = 1;
-            HitChance = 10;
+            HitChance = 35;
             Description = "A slimey egg with spines";
-            IsFragile = true;
             Block = 10;
-            }
-        public Egg() { } //unqualified
+            IsAcidic = true;
+        } //unqualified
         public override int CalcDamage()
         {
             
-            return CalcDamage()*2;
+            return base.CalcDamage()*2;
         }
         public override string ToString()
         {
-            return base.ToString() + $"{(IsFragile ? "I'm fragile" : "")}";
+            return base.ToString() + $"{(IsAcidic ? "I'm fragile" : "")}";
         }
 
     }

@@ -11,10 +11,10 @@ namespace DungeonLibrary
         //Enemies/Monsters won't have this
     public enum Race
     {
-        Warrior,
-        Elf,
-        Dwarf,
-        Bard,
+        Fry_Cook,
+        Delicatessen_Clerk,
+        Sous_Chef,
+        Cook,
         Princess
     }//end class
 }//end namespace

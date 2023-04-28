@@ -16,7 +16,9 @@ namespace DungeonApp
             //Start to play background music? (.wav) <100MB
             //System.Windows.Extensions (NuGet package)
             Console.Title = "DUNGEON OF DOOM";
-            Console.WriteLine("Welcome, Adventurer! Your journey begins!");
+            Console.WriteLine("What is your name?");
+            string gamerName = Console.ReadLine();
+            Console.WriteLine($"Welcome, Adventurer {gamerName}! Your journey begins!");
 
             #endregion
 
@@ -25,13 +27,14 @@ namespace DungeonApp
             int score = 0;
 
             //Weapon object creation
-            Weapon weap = new("Long Sword", WeaponType.Sword, 1, 8, 10, false);
+            Weapon weap = new("Spongebob's Spatula", WeaponType.Spatula, 1, 15, 12, false);
             //Potential Expansion: Show user a list of weapons and let them pick one. Or assign one Randomly
 
             //Player object creation
             //Recommended expansion - choose player custom name and race
-            Player player = new("Leeroy Jenkins", 70, 15, 40, Race.Elf, weap);
+            Player player = new("Leeroy Jenkins", 70, 15, 40, Race.Fry_Cook, weap);
 
+            
             //TODO - Main Game Loop
             bool lose = false;
             do
@@ -40,7 +43,7 @@ namespace DungeonApp
                 Console.WriteLine(GetRoom());
                 //Generate a monster
                 Monster monster = GetMonster();
-                
+
                 Console.WriteLine("In this room: " + monster.Name);
                 #region Main Menu Loop
 
@@ -87,7 +90,7 @@ namespace DungeonApp
                             break;
                         case ConsoleKey.P:
                             Console.WriteLine("Player Info:");
-                            Console.WriteLine($"{player}\t You have defeated {score} monsters");
+                            Console.WriteLine($"{gamerName} - {player}\t You have defeated {score} monsters");
                             break;
                         case ConsoleKey.M:
                             Console.WriteLine("Monster Info:");
@@ -141,14 +144,14 @@ namespace DungeonApp
         }
         private static Monster GetMonster()
         {
-            Monster m1 = new("Orc", 50, 40, 20, 1, 8, "A dirty orc wielding a rusty axe");
-            Monster m2 = new("Troll", 40, 50, 30, 1, 8, "A troll... from the dungeon");
-            Monster m3 = new("Giant Spider", 70, 30, 10, 1, 8, "A giant spider with venomous fangs");
-            Monster m4 = new("Goblin", 15, 25, 60, 1, 8, "A sneaky goblin with a sharp knife");
+            Monster m1 = new Egg();
+            Monster m2 = new Turkey();
+            Monster m3 = new Goose();
+            Monster m4 = new Ostrich();
 
             Monster[] monsters =
             {
-                m1,m1, m2, m3, m4, m4, m4, m4
+                m1,m1, m1, m2, m2, m3, m3, m4,
             };
             return monsters[new Random().Next(monsters.Length)];
         }
