@@ -11,8 +11,9 @@ namespace DungeonLibrary
     {
         public Race PlayerRace { get; set; }
         public Weapon EquippedWeapon { get; set; }
-        public Player(string name, int hitChance, int block, int maxLife, Race playerRace, Weapon equippedWeapon)
-            : base(name, hitChance, block, maxLife)
+        public Player(string name, int hitChance, int block, int maxLife, //Character params
+            Race playerRace, Weapon equippedWeapon) //player params
+            : base(name, hitChance, block, maxLife) //send ONLY character params back to parent
         {
             PlayerRace = playerRace;
             EquippedWeapon = equippedWeapon;
@@ -20,19 +21,23 @@ namespace DungeonLibrary
             #region Racial Bonuses
             switch (PlayerRace)
             {
-                case Race.Warrior:
-                    EquippedWeapon += 5;
+                case Race.Fry_Cook:
+                    //HitChance += 5;
                     break;
-                case Race.Elf:
-                    HitChance += 5;
+                case Race.Delicatessen_Clerk:
+                    //HitChance += 3;
+                    //Block += 3;
                     break;
-                case Race.Dwarf:
+                case Race.Sous_Chef:
+                   // MaxLife += 5;
                     break;
-                case Race.Bard:
+                case Race.Cook:
+                    //HitChance += 1;
+                    //MaxLife -= 2;
                     break;
                 case Race.Princess:
-                    HitChance -= 2;
-                    Block += 10;
+                    //HitChance -= 2;
+                    //Block += 5;
                     break;
             }
 
@@ -44,17 +49,17 @@ namespace DungeonLibrary
             string raceDescription = "";
             switch (PlayerRace)
             {
-                case Race.Warrior:
-                    raceDescription = "A burly, weathered, ranger who is covered in hair. Mostly his.";
+                case Race.Fry_Cook:
+                    raceDescription = "A non-copyrighted sea creature fully of holes";
                     break;
-                case Race.Elf:
-                    raceDescription = "A skilled fighter with great vision. From the elf eyes.";
+                case Race.Delicatessen_Clerk:
+                    raceDescription = "A moustached afficionado of meats";
                     break;
-                case Race.Dwarf:
-                    raceDescription = "Small and mighty with a hankering for TREASURE.";
+                case Race.Sous_Chef:
+                    raceDescription = "A purveyor of only the finest dishes";
                     break;
-                case Race.Bard:
-                    raceDescription = "Only here for some sick tunes. Toss them a coin.";
+                case Race.Cook:
+                    raceDescription = "They make food";
                     break;
                 case Race.Princess:
                     raceDescription = "You want the princess? As part of the fighting game? If you say so.";

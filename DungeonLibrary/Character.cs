@@ -65,8 +65,6 @@
             }
         }
 
-        
-
 
         //CONSTRUCTORS - Life = life; -> Life = maxLife
         //No matter what, assign MaxLife BEFORE Life.
@@ -74,11 +72,10 @@
             public Character(string name,  int hitChance, int block, int maxLife)
         {//Fully Qualified
             Name = name;
-       
-            Life = maxLife;
-            
             HitChance = hitChance;
             Block = block;
+            MaxLife = maxLife;
+            Life = maxLife;
 
         }//end Fully Qualified
         public Character()
@@ -89,11 +86,10 @@
         //METHODS
         public override string ToString()
         {
-            return $"Name: {Name}\n " +
-                
+            return $"Name: {Name}\n" +
                 $"Life: {Life} / {MaxLife}\n" +
-                $"Hit Chance: {HitChance}\n" +
-                $"Block: {Block}\n";
+                $"Hit Chance: {HitChance}%\n" +
+                $"Block: {Block}%";
                 
         }
         public virtual int CalcBlock() { return Block; }
