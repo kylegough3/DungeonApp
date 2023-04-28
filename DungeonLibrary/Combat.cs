@@ -36,7 +36,7 @@ namespace DungeonLibrary
             else
             { Console.WriteLine($"The {attacker.Name} missed!"); }
             Console.WriteLine($"Roll: {roll}\n" +
-                $"Chance: {chance}");
+                $"Chance: {chance}\n");
 
         }
         //Handle one round of battle, attacks from both sides

@@ -22,7 +22,7 @@ namespace DungeonApp
 
             #endregion
 
-            //TODO - Variable to keep score
+            // Variable to keep score
             //Potential expansion, use "money" of some sort instead of a score to let user buy potions, weapons, whatever.
             int score = 0;
 
@@ -32,7 +32,7 @@ namespace DungeonApp
 
             //Player object creation
             //Recommended expansion - choose player custom name and race
-            Player player = new("Leeroy Jenkins", 70, 15, 40, Race.Fry_Cook, weap);
+            Player player = new($"{gamerName}", 70, 15, 40, Race.Fry_Cook, weap);
 
             
             //TODO - Main Game Loop
@@ -44,7 +44,7 @@ namespace DungeonApp
                 //Generate a monster
                 Monster monster = GetMonster();
 
-                Console.WriteLine("In this room: " + monster.Name);
+                Console.WriteLine($"In this room: { monster.Name} - {monster.Description}");
                 #region Main Menu Loop
 
                 //Encounter/Menu Loop
@@ -70,6 +70,8 @@ namespace DungeonApp
                             //Give certain races/characters with certain weapon an advantage. If player race is dark elf, them combat.doattack(player, monster)
                             #endregion
                             Combat.DoBattle(player, monster);
+                            Console.WriteLine($"{gamerName} Life: {player.Life} / {player.MaxLife}\n" +
+                                $"{monster.Name} Life: {monster.Life} / {monster.MaxLife}");
                             
                             //check if the monster is dead
                             if (monster.Life <=0)
@@ -110,6 +112,8 @@ namespace DungeonApp
                     if (player.Life <=0)
                     {
                         Console.WriteLine("Dude...you died!\a");
+                        Console.ReadKey();
+                        Console.Clear();
                         lose = true;
                     }
                 } while (!reload && !lose);
@@ -120,7 +124,7 @@ namespace DungeonApp
             } while (!lose);
             //while lose is false, keep looping
             //Output the final score
-            Console.WriteLine($"{player}\t You have defeated {score} monster{(score ==1 ? "." : "s.")}");
+            Console.WriteLine($"GAME OVER\n\n{player}\n You have defeated {score} monster{(score ==1 ? "." : "s.")}");
 
         }//end Main()
 

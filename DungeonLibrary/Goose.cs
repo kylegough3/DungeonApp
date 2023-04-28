@@ -29,11 +29,11 @@ namespace DungeonLibrary
         {
             MaxLife = 60;
             MaxDamage = 20;
-            Name = "Turkey";
+            Name = "Goose";
             Life = 80;
             MinDamage = 1;
             HitChance = 45;
-            Description = "A truly vengeful turkey";
+            Description = "The Canadian Nightmare";
             Block = 20;
             IsPoultry = true;
             CanHonk = true;
@@ -58,7 +58,7 @@ namespace DungeonLibrary
 
         public override string ToString()
         {
-            return base.ToString() + $"{(IsPoultry ? "I'm fowl" : "")}\n" +
+            return base.ToString() + $"\n{(IsPoultry ? "I'm fowl" : "")}\n" +
                 $"{(CanHonk ? "I'm noisy" : "")}";
         }
 

@@ -86,7 +86,7 @@
         //METHODS
         public override string ToString()
         {
-            return $"Name: {Name}\n " +
+            return $"Name: {Name}\n" +
                 $"Life: {Life} / {MaxLife}\n" +
                 $"Hit Chance: {HitChance}%\n" +
                 $"Block: {Block}%";

@@ -26,8 +26,7 @@ namespace DungeonLibrary
             
             IsPoultry = isPoultry;
             CanHonk = canHonk;
-            
-            Speed = new Random().Next(10);
+            Speed = speed;
         }
         public Ostrich() 
         {
@@ -41,6 +40,7 @@ namespace DungeonLibrary
             Block = 30;
             IsPoultry = true;
             CanHonk = true;
+            Speed = new Random().Next(10);
         } //unqualified
         public override int CalcBlock()
         {

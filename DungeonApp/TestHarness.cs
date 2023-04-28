@@ -23,7 +23,8 @@ namespace DungeonApp
                 Console.WriteLine("Current Player Life: " + player.Life);
                 Console.WriteLine("Current Monster Life: " + m1.Life);
                 Console.WriteLine("Speed: " + m1.Speed);
-                
+                Console.WriteLine("Monster Hit Chance: "+m1.CalcHitChance());
+
                 Console.ReadKey();
                 Console.Clear();
             }
