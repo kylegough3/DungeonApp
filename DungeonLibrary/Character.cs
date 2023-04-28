@@ -1,6 +1,8 @@
 ﻿namespace DungeonLibrary
 {
-    public class Character
+    //abstract marks a Class as "incomplete". It must be inherited somewhere to be used.
+    //abstract classes cannot be created as an object using the new() keyword. 
+    public abstract class Character
     {
         /*
          * Create Fields and Properties for each of the following attributes
@@ -69,12 +71,12 @@
         //CONSTRUCTORS - Life = life; -> Life = maxLife
         //No matter what, assign MaxLife BEFORE Life.
 
-            public Character(string name,  int hitChance, int block, int maxLife, int life)
+            public Character(string name,  int hitChance, int block, int maxLife)
         {//Fully Qualified
             Name = name;
        
-            MaxLife = maxLife;
-            Life = life;
+            Life = maxLife;
+            
             HitChance = hitChance;
             Block = block;
 
@@ -94,11 +96,13 @@
                 $"Block: {Block}\n";
                 
         }
-        public int CalcBlock() { return Block; }
+        public virtual int CalcBlock() { return Block; }
 
-        public int CalcHitChance() { return HitChance; }
+        public virtual int CalcHitChance() { return HitChance; }
 
-        public int CalcDamage() { return 0; }
+        public abstract int CalcDamage();
+
+        //an abstract method will have no functionality, no scopes. It makes override MANDATORY.
 
     }//end class
 }//end namespace
