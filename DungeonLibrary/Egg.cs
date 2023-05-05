@@ -30,7 +30,7 @@ namespace DungeonLibrary
             Name = "Egg";
             Life = 20;
             MinDamage = 1;
-            HitChance = 35;
+            HitChance = 40;
             Description = "A slimey egg with spines";
             Block = 10;
             IsAcidic = true;
@@ -42,7 +42,7 @@ namespace DungeonLibrary
         }
         public override string ToString()
         {
-            return base.ToString() + $"{(IsAcidic ? "I'm fragile" : "")}";
+            return base.ToString() + $"\n{(IsAcidic ? "I'm fragile" : "")}";
         }
 
     }

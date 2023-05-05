@@ -30,6 +30,7 @@ namespace DungeonLibrary
                     break;
                 case Race.Sous_Chef:
                     MaxLife += 5;
+                    Life += 5;
                     break;
                 case Race.Cook:
                     HitChance += 1;
@@ -67,8 +68,26 @@ namespace DungeonLibrary
                     raceDescription = "You want the princess? As part of the fighting game? If you say so.";
                     break;
             }
-            return base.ToString() + $"\nWeapon: {EquippedWeapon.Name}\n" +
-                $"Description: \n{raceDescription}";
+            string playerRace = "";
+            switch (PlayerRace)
+            {
+                case Race.Fry_Cook:
+                    playerRace = "Fry Cook";
+                    break;
+                case Race.Delicatessen_Clerk:
+                    playerRace = "Delicatessen Clerk";
+                    break;
+                case Race.Sous_Chef:
+                    playerRace = "Sous Chef";
+                    break;
+                case Race.Cook:
+                    playerRace = "Cook";
+                    break;
+                case Race.Princess:
+                    playerRace = "Princess";
+                    break;
+            }
+            return base.ToString() + $"\nClass:{playerRace.ToString().Replace('_', ' ')}\nDescription: \n{raceDescription}" + $"\nWeapon: {EquippedWeapon.Name}\n";
 
         }//end ToString() override
 

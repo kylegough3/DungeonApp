@@ -27,18 +27,20 @@ namespace DungeonApp
             int score = 0;
 
             //Weapon object creation
-            //bool confirm = false;
-            //do
-            //{
-            #region Weapon creation and choice
-                Weapon weap1 = new("Spongebob's Spatula", WeaponType.Spatula, 3, 35, 12, false);
+            bool confirm = false;
+            Player player = new();
+            Weapon userWeapon = new();
+            do
+            {
+                #region Weapon creation and choice
+                Weapon weap1 = new("Spongebob's Spatula", WeaponType.Spatula, 3, 25, 12, false);
                 Weapon weap2 = new("Harley's Mallet", WeaponType.Mallet, 5, 20, 10, true);
                 Weapon weap3 = new("Ash's Chainsaw", WeaponType.Chainsaw, 1, 50, 5, true);
-                Weapon weap4 = new("Sweedish Chef's Cleaver", WeaponType.Cleaver, 5, 25, 25, false);
-                Weapon weap5 = new("Rapunzel's Frying Pan", WeaponType.Frying_Pan, 7, 30, 20, false);
+                Weapon weap4 = new("Sweedish Chef's Cleaver", WeaponType.Cleaver, 5, 20, 25, false);
+                Weapon weap5 = new("Rapunzel's Frying Pan", WeaponType.Frying_Pan, 7, 25, 20, false);
 
                 bool weapchosen = false;
-                Weapon userWeapon = new();
+                
                 do
                 {
                     Console.WriteLine($"Choose your weapon: (1-5)\n" +
@@ -80,7 +82,7 @@ namespace DungeonApp
                     }
                 } while (!weapchosen);
                 Console.WriteLine();
-#endregion
+                #endregion
 
 
                 //Player object creation
@@ -93,7 +95,7 @@ namespace DungeonApp
                 Player player3 = new($"{gamerName}", 70, 15, 100, Race.Sous_Chef, userWeapon);
                 Player player4 = new($"{gamerName}", 70, 15, 100, Race.Cook, userWeapon);
                 Player player5 = new($"{gamerName}", 70, 15, 100, Race.Princess, userWeapon);
-                Player player = new();
+
 
                 bool classChosen = false;
                 do
@@ -150,16 +152,16 @@ namespace DungeonApp
                 { player.HitChance += 2; }
                 #endregion
 
-            //    Console.WriteLine($"You are {gamerName}, the {player.PlayerRace.ToString().Replace('_', ' ')}, wielding a {userWeapon.Name}.\n" +
-            //        $"Is this correct? (Y/N)");
-            //    string confirmation = Console.ReadLine().ToUpper();
-            //    switch (confirmation)
-            //    {
-            //        case "Y": confirm = true; break;
-            //        case "N": { weapchosen = false; classChosen = false; confirm = true; } break;
-            //        default: Console.WriteLine("Invalid Entry"); break;
-            //    }
-            //} while (!confirm);
+                Console.WriteLine($"\nYou are {gamerName}, the {player.PlayerRace.ToString().Replace('_', ' ')}, wielding a {userWeapon.Name}.\n" +
+                    $"Is this correct? (Y/N)");
+                string confirmation = Console.ReadLine().ToUpper();
+                switch (confirmation)
+                {
+                    case "Y": confirm = true; break;
+                    case "N": { weapchosen = false; classChosen = false; Console.Clear(); } break;
+                    default: Console.WriteLine("Invalid Entry"); break;
+                }
+            } while (!confirm);
 
             Console.Clear();
             Console.WriteLine("Let's Begin!");
@@ -204,26 +206,30 @@ namespace DungeonApp
                             //check if the monster is dead
                             if (monster.Life <=0)
                             {
-                                Console.WriteLine($"\nYou killed {monster.Name}\n");
-                                Console.ResetColor();
-                                reload = true;
-                                score++;
-                                Console.WriteLine("Choose your reward bonus! (1-3):\n" +
-                                    "1 - Increase Accuracy\n" +
-                                    "2 - Increase Defense\n" +
-                                    "3 - Increase Strength\n" +
-                                    "4 - Increase Health\n" +
-                                    "5 - Increase Stealth");
-                                char boostChoice = (Console.ReadKey().KeyChar);
-                                switch (boostChoice)
+                                bool boostChosen = false;
+                                do
                                 {
-                                    case '1': player.HitChance += 2; break;
-                                    case '2': player.Block += 2; break;
-                                    case '3': userWeapon.MaxDamage += 2; break;
-                                    case '4': player.Life += 5; break;
-                                    case '5': monster.HitChance -= 2; break;
-                                    default: Console.WriteLine("Invalid Entry"); break;
-                                }
+                                    Console.WriteLine($"\nYou killed {monster.Name}\n");
+                                    Console.ResetColor();
+                                    reload = true;
+                                    score++;
+                                    Console.WriteLine("Choose your reward bonus! (1-3):\n" +
+                                        "1 - Increase Accuracy\n" +
+                                        "2 - Increase Defense\n" +
+                                        "3 - Increase Strength\n" +
+                                        "4 - Increase Health\n" +
+                                        "5 - Increase Stealth");
+                                    char boostChoice = (Console.ReadKey().KeyChar);
+                                    switch (boostChoice)
+                                    {
+                                        case '1': player.HitChance += 2; boostChosen = true; break;
+                                        case '2': player.Block += 2; boostChosen = true; break;
+                                        case '3': userWeapon.MaxDamage += 2; boostChosen = true; break;
+                                        case '4': player.Life += 5; boostChosen = true; break;
+                                        case '5': monster.HitChance -= 2; boostChosen = true; break;
+                                        default: Console.WriteLine("\nInvalid Entry\n"); break;
+                                    }
+                                } while (!boostChosen);
                                 Console.Clear();
                                 
 
@@ -237,7 +243,7 @@ namespace DungeonApp
                             break;
                         case ConsoleKey.P:
                             Console.WriteLine("Player Info:");
-                            Console.WriteLine($"{gamerName} - {player}\n You have defeated {score} monsters");
+                            Console.WriteLine($"\n{player}\nYou have defeated {score} monsters");
                             break;
                         case ConsoleKey.M:
                             Console.WriteLine("Monster Info:");
@@ -256,7 +262,9 @@ namespace DungeonApp
                     //Check player life. If they're dead, game over.
                     if (player.Life <=0)
                     {
-                        Console.WriteLine("Dude...you died!\a");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Dude...you died!\a\nPress any key to continue");
+                        Console.ResetColor();
                         Console.ReadKey();
                         Console.Clear();
                         lose = true;
@@ -269,7 +277,12 @@ namespace DungeonApp
             } while (!lose);
             //while lose is false, keep looping
             //Output the final score
-            Console.WriteLine($"GAME OVER\n\n{player}\n You have defeated {score} monster{(score ==1 ? "." : "s.")}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("*** GAME OVER ***");
+            Console.ResetColor();
+            Console.WriteLine($"\n\n{player}\n You have defeated {score} monster{(score ==1 ? "." : "s.")}");
+            Console.WriteLine("Press any key to exit");
+            Console.ReadLine();
 
         }//end Main()
 
