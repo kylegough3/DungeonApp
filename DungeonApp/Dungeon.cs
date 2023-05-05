@@ -27,15 +27,143 @@ namespace DungeonApp
             int score = 0;
 
             //Weapon object creation
-            Weapon weap = new("Spongebob's Spatula", WeaponType.Spatula, 1, 15, 12, false);
-            //Potential Expansion: Show user a list of weapons and let them pick one. Or assign one Randomly
+            //bool confirm = false;
+            //do
+            //{
+            #region Weapon creation and choice
+                Weapon weap1 = new("Spongebob's Spatula", WeaponType.Spatula, 3, 35, 12, false);
+                Weapon weap2 = new("Harley's Mallet", WeaponType.Mallet, 5, 20, 10, true);
+                Weapon weap3 = new("Ash's Chainsaw", WeaponType.Chainsaw, 1, 50, 5, true);
+                Weapon weap4 = new("Sweedish Chef's Cleaver", WeaponType.Cleaver, 5, 25, 25, false);
+                Weapon weap5 = new("Rapunzel's Frying Pan", WeaponType.Frying_Pan, 7, 30, 20, false);
 
-            //Player object creation
-            //Recommended expansion - choose player custom name and race
-            Player player = new($"{gamerName}", 70, 15, 40, Race.Fry_Cook, weap);
+                bool weapchosen = false;
+                Weapon userWeapon = new();
+                do
+                {
+                    Console.WriteLine($"Choose your weapon: (1-5)\n" +
+                        $"1 - {weap1.WeaponType}\t{weap1.Name}\n" +
+                        $"2 - {weap2.WeaponType}\t{weap2.Name}\n" +
+                        $"3 - {weap3.WeaponType}\t{weap3.Name}\n" +
+                        $"4 - {weap4.WeaponType}\t{weap4.Name}\n" +
+                        $"5 - {weap5.WeaponType.ToString().Replace('_', ' ')}\t{weap5.Name}\n" +
+                        $"r = Random\n");
 
-            
-            //TODO - Main Game Loop
+                    char userChoice = (Console.ReadKey().KeyChar);
+                    Console.WriteLine();
+                    switch (userChoice)
+                    {
+                        case '1': userWeapon = weap1; weapchosen = true; break;
+                        case '2': userWeapon = weap2; weapchosen = true; break;
+                        case '3': userWeapon = weap3; weapchosen = true; break;
+                        case '4': userWeapon = weap4; weapchosen = true; break;
+                        case '5': userWeapon = weap5; weapchosen = true; break;
+                        case 'r':
+                            {
+                                Random random = new Random();
+                                int randWeapInt = random.Next(1, 6);
+                                string randChoiceStr = Convert.ToString(randWeapInt);
+                                char randChoice = Convert.ToChar(randChoiceStr);
+                                switch (randChoice)
+                                {
+                                    case '1': userWeapon = weap1; weapchosen = true; break;
+                                    case '2': userWeapon = weap2; weapchosen = true; break;
+                                    case '3': userWeapon = weap3; weapchosen = true; break;
+                                    case '4': userWeapon = weap4; weapchosen = true; break;
+                                    case '5': userWeapon = weap5; weapchosen = true; break;
+                                    default: break;
+                                }
+                                Console.WriteLine($"You randomly chose: {userWeapon.Name}!");
+                                break;
+                            }
+                        default: Console.WriteLine("Invalid Entry"); break;
+                    }
+                } while (!weapchosen);
+                Console.WriteLine();
+#endregion
+
+
+                //Player object creation
+
+                #region Player Character Choice
+
+
+                Player player1 = new($"{gamerName}", 70, 15, 100, Race.Fry_Cook, userWeapon);
+                Player player2 = new($"{gamerName}", 70, 15, 100, Race.Delicatessen_Clerk, userWeapon);
+                Player player3 = new($"{gamerName}", 70, 15, 100, Race.Sous_Chef, userWeapon);
+                Player player4 = new($"{gamerName}", 70, 15, 100, Race.Cook, userWeapon);
+                Player player5 = new($"{gamerName}", 70, 15, 100, Race.Princess, userWeapon);
+                Player player = new();
+
+                bool classChosen = false;
+                do
+                {
+                    Console.WriteLine($"Choose your class: (1-5)\n" +
+                        $"1 - {gamerName} the {player1.PlayerRace.ToString().Replace('_', ' ')}\n" +
+                        $"2 - {gamerName} the {player2.PlayerRace.ToString().Replace('_', ' ')}\n" +
+                        $"3 - {gamerName} the {player3.PlayerRace.ToString().Replace('_', ' ')}\n" +
+                        $"4 - {gamerName} the {player4.PlayerRace.ToString().Replace('_', ' ')}\n" +
+                        $"5 - {gamerName} the {player5.PlayerRace.ToString().Replace('_', ' ')}\n" +
+                        $"r = Random\n");
+                    char userChoice = (Console.ReadKey().KeyChar);
+                    switch (userChoice)
+                    {
+                        case '1': player = player1; classChosen = true; break;
+                        case '2': player = player2; classChosen = true; break;
+                        case '3': player = player3; classChosen = true; break;
+                        case '4': player = player4; classChosen = true; break;
+                        case '5': player = player5; classChosen = true; break;
+                        case 'r':
+                            {
+                                Random random = new Random();
+                                int randPlayInt = random.Next(1, 6);
+                                string randChoiceStr = Convert.ToString(randPlayInt);
+                                char randChoice = Convert.ToChar(randChoiceStr);
+                                switch (randChoice)
+                                {
+                                    case '1': player = player1; classChosen = true; break;
+                                    case '2': player = player2; classChosen = true; break;
+                                    case '3': player = player3; classChosen = true; break;
+                                    case '4': player = player4; classChosen = true; break;
+                                    case '5': player = player5; classChosen = true; break;
+                                    default: break;
+                                }
+                                Console.WriteLine($"You randomly chose: {player.PlayerRace.ToString().Replace('_', ' ')}!");
+                                break;
+                            }
+                        default: Console.WriteLine("Invalid Entry"); break;
+                    }
+                } while (!classChosen);
+                #endregion
+
+                #region Weapon and Race Pair Boosts
+                //Weapon + Race boosters
+                if (player.PlayerRace == Race.Fry_Cook && userWeapon == weap1)
+                { player.HitChance += 2; }
+                if (player.PlayerRace == Race.Delicatessen_Clerk && userWeapon == weap4)
+                { player.HitChance += 2; }
+                if (player.PlayerRace == Race.Sous_Chef && userWeapon == weap2)
+                { player.HitChance += 2; }
+                if (player.PlayerRace == Race.Cook && userWeapon == weap3)
+                { player.HitChance += 2; }
+                if (player.PlayerRace == Race.Princess && userWeapon == weap5)
+                { player.HitChance += 2; }
+                #endregion
+
+            //    Console.WriteLine($"You are {gamerName}, the {player.PlayerRace.ToString().Replace('_', ' ')}, wielding a {userWeapon.Name}.\n" +
+            //        $"Is this correct? (Y/N)");
+            //    string confirmation = Console.ReadLine().ToUpper();
+            //    switch (confirmation)
+            //    {
+            //        case "Y": confirm = true; break;
+            //        case "N": { weapchosen = false; classChosen = false; confirm = true; } break;
+            //        default: Console.WriteLine("Invalid Entry"); break;
+            //    }
+            //} while (!confirm);
+
+            Console.Clear();
+            Console.WriteLine("Let's Begin!");
+            //Main Game Loop
             bool lose = false;
             do
             {
@@ -80,7 +208,24 @@ namespace DungeonApp
                                 Console.ResetColor();
                                 reload = true;
                                 score++;
-                                //Possible expansion: combat rewards
+                                Console.WriteLine("Choose your reward bonus! (1-3):\n" +
+                                    "1 - Increase Accuracy\n" +
+                                    "2 - Increase Defense\n" +
+                                    "3 - Increase Strength\n" +
+                                    "4 - Increase Health\n" +
+                                    "5 - Increase Stealth");
+                                char boostChoice = (Console.ReadKey().KeyChar);
+                                switch (boostChoice)
+                                {
+                                    case '1': player.HitChance += 2; break;
+                                    case '2': player.Block += 2; break;
+                                    case '3': userWeapon.MaxDamage += 2; break;
+                                    case '4': player.Life += 5; break;
+                                    case '5': monster.HitChance -= 2; break;
+                                    default: Console.WriteLine("Invalid Entry"); break;
+                                }
+                                Console.Clear();
+                                
 
                             }
                             break;
@@ -92,7 +237,7 @@ namespace DungeonApp
                             break;
                         case ConsoleKey.P:
                             Console.WriteLine("Player Info:");
-                            Console.WriteLine($"{gamerName} - {player}\t You have defeated {score} monsters");
+                            Console.WriteLine($"{gamerName} - {player}\n You have defeated {score} monsters");
                             break;
                         case ConsoleKey.M:
                             Console.WriteLine("Monster Info:");
@@ -142,9 +287,9 @@ namespace DungeonApp
             };
             //rng
             Random rand = new Random();
-            int index = rand.Next(rooms.Length);
+            
             //return a room using the rng
-            return rooms[index];
+            return rooms[rand.Next(rooms.Length)];
         }
         private static Monster GetMonster()
         {

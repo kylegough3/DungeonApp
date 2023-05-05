@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 namespace DungeonLibrary
 {
     
-        public class Ostrich : Monster
+        public sealed class Ostrich : Monster
         {
-            //At least 1 prop
-            //Parent compliant ctor
-            //Override ToString()
-            //Override at least oen calcBlock(), CalcHitChance(), and or CalcDamage()
+            
 
             private int _speed;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class Player : Character
+    public sealed class Player : Character
     {
         public Race PlayerRace { get; set; }
         public Weapon EquippedWeapon { get; set; }
@@ -22,28 +22,30 @@ namespace DungeonLibrary
             switch (PlayerRace)
             {
                 case Race.Fry_Cook:
-                    //HitChance += 5;
+                    HitChance += 5;
                     break;
                 case Race.Delicatessen_Clerk:
-                    //HitChance += 3;
-                    //Block += 3;
+                    HitChance += 3;
+                    Block += 3;
                     break;
                 case Race.Sous_Chef:
-                   // MaxLife += 5;
+                    MaxLife += 5;
                     break;
                 case Race.Cook:
-                    //HitChance += 1;
-                    //MaxLife -= 2;
+                    HitChance += 1;
+                    MaxLife -= 2;
                     break;
                 case Race.Princess:
-                    //HitChance -= 2;
-                    //Block += 5;
+                    HitChance += 2;
+                    Block += 5;
+                    MaxLife -= 3;
                     break;
             }
 
             #endregion
-
+            
         }
+        public Player() { }
         public override string ToString()
         {
             string raceDescription = "";

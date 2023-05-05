@@ -58,6 +58,10 @@
                 {
                     _life = MaxLife;
                 }
+                else if (value < 0)
+                {
+                    _life = 0;
+                }
                 else
                 {
                     _life = value;

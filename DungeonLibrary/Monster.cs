@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class Monster : Character
+    public abstract class Monster : Character
     {
         //Props
         //MinDamage int - Field - Business rule: >0 AND <MaxDamage

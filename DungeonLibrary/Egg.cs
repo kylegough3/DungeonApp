@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DungeonLibrary
 {
     
-        public class Egg : Monster
+        public sealed class Egg : Monster
         {
             //At least 1 prop
             //Parent compliant ctor
