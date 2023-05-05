@@ -34,7 +34,10 @@ namespace DungeonLibrary
                 //if roll == 100, then increase damage by something. maybe damage *2. if fail with a 1, maybe hurt attacker instead of defender
             }
             else
-            { Console.WriteLine($"The {attacker.Name} missed!"); }
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"The {attacker.Name} missed!"); }
+            Console.ResetColor();
             Console.WriteLine($"Roll: {roll}\n" +
                 $"Chance: {chance}\n");
 
