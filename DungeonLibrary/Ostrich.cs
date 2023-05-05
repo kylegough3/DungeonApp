@@ -31,7 +31,7 @@ namespace DungeonLibrary
             MaxDamage = 30;
             Name = "Ostrich";
             Life = 80;
-            MinDamage = 1;
+            MinDamage = 8;
             HitChance = 55;
             Description = "The largest of birds";
             Block = 30;
@@ -65,7 +65,7 @@ namespace DungeonLibrary
 
         public override string ToString()
         {
-            return base.ToString() + $"{(IsPoultry ? "I'm fowl" : "")}\n" +
+            return base.ToString() + $"\n{(IsPoultry ? "I'm fowl" : "")}\n" +
                 $"{(CanHonk ? "I'm noisy" : "")}";
         }
 

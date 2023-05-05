@@ -29,8 +29,8 @@ namespace DungeonLibrary
             MaxDamage = 30;
             Name = "Turkey";
             Life = 80;
-            MinDamage = 1;
-            HitChance = 45;
+            MinDamage = 8;
+            HitChance = 60;
             Description = "A truly vengeful turkey";
             Block = 30;
             IsPoultry = true;
@@ -45,7 +45,7 @@ namespace DungeonLibrary
         }
         public override string ToString()
         {
-            return base.ToString() + $"{(IsPoultry ? "I'm fowl" : "")}";
+            return base.ToString() + $"\n{(IsPoultry ? "I'm fowl" : "")}";
         }
 
     }

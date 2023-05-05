@@ -31,7 +31,7 @@ namespace DungeonLibrary
             MaxDamage = 20;
             Name = "Goose";
             Life = 80;
-            MinDamage = 1;
+            MinDamage = 5;
             HitChance = 45;
             Description = "The Canadian Nightmare";
             Block = 20;
